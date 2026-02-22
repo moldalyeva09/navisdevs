@@ -18,9 +18,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path , include
 
+import free_consultation
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('main.urls')),
-    path('',include('service_category.urls')),
-
+    path('contact/',include('contact.urls')),
+    path('consultation/',include('free_consultation.urls'))
 ]

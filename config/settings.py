@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-1#yv5c*&v!1(d)8erwq0g4^y3#@w960+b_114ndtbpo_fg)7vf
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# settings.py
+TELEGRAM_TOKEN = "8590383433:AAH7KF8RTZP26pRPp3WwKVGNm4jMZ8yPnyo"
+TELEGRAM_CHAT_ID = "-1003702648842"
 
 # Application definition
 
@@ -39,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'rest_framework',
-    'service_category',
+    'contact',
+    'free_consultation',
+    'directions',
 ]
 
 MIDDLEWARE = [
