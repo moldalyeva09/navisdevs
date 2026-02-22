@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Main, Comment, Application, Image, Instr
+from .models import Main, Comment, Application, Image, Instr, ServiceItem
 from .models import Url
 
 
@@ -41,6 +41,10 @@ class ApplicationSerializer(serializers.ModelSerializer):
         model = Application
         fields = '__all__'
 
+    class ServiceItemSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = ServiceItem
+            fields = ['id', 'name', 'description']
     # def validate_phone_number(self,number):
 
 

@@ -3,6 +3,7 @@ from rest_framework import generics
 
 from main.models import Main, Url, Comment, Application, Image, Instr
 from main.serializers import MainSerializer, InstrSerializer
+from main.models import ServiceItem
 
 
 class MainList(generics.ListAPIView):
@@ -34,6 +35,9 @@ class ApplicationCreate(generics.CreateAPIView):
     queryset = Application.objects.all()
     serializer_class=MainSerializer
 
+class ServiceListAPIView(generics.ListAPIView):
+    queryset = ServiceItem.objects.prefetch_related('items').all()
+    serializer_class = MainSerializer
 
 
 

@@ -6,7 +6,7 @@ from .views import *
 
 
 urlpatterns = [
-
+    path('api/service/', ServiceListAPIView.as_view(),name='service-list'),
     path('main/', MainList.as_view()),
     path('main/create/', MainCreate.as_view()),
     path('image/',ImageCreate.as_view()),
