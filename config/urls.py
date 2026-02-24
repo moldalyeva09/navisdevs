@@ -24,5 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('main.urls')),
     path('contact/',include('contact.urls')),
-    path('consultation/',include('free_consultation.urls'))
+    path('consultation/',include('free_consultation.urls')),
+    path('vacancy/',include('vacancy.urls')),
+    path('jobs/',include('vacancy_main_page.urls')),
+    path('activity/',include('activity.urls')),
+    path('full_activity_page/',include('full_activity_page.urls')),
 ]

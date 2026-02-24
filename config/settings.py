@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'contact',
     'free_consultation',
     'directions',
+    'vacancy',
+    'vacancy_main_page',
+    'activity',
+    'full_activity_page',
 ]
 
 MIDDLEWARE = [
