@@ -10,8 +10,8 @@ from contact.models import Contact
 from contact.serializer import ContactSerializer
 import requests
 
-TOKEN = "8590383433:AAH7KF8RTZP26pRPp3WwKVGNm4jMZ8yPnyo"
-CHAT_ID = "-1003702648842"   # группа ID
+TOKEN = ""
+CHAT_ID = ""   # группа ID
 
 class SendTelegramMessageView(View):
     def post(self, request):
