@@ -5,6 +5,4 @@ from .views import SendTelegramMessageView
 
 urlpatterns = [
     path("send/", SendTelegramMessageView.as_view()),
-    path("conctact", ContactViewSet.as_view),
-
 ]

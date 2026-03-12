@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 from main.models import Main, Url, Comment, Application, Image, Instr
-from main.serializers import MainSerializer, InstrSerializer
+from main.serializers import MainSerializer
 from main.models import ServiceItem
 
 
@@ -20,7 +22,7 @@ class ImageCreate(generics.CreateAPIView):
 
 class InstrCreate(generics.CreateAPIView):
     queryset = Instr.objects.all()
-    serializer_class = InstrSerializer
+    serializer_class = MainSerializer
 
 
 class UrlListCreate(generics.ListCreateAPIView):
@@ -38,6 +40,12 @@ class ApplicationCreate(generics.CreateAPIView):
 class ServiceListAPIView(generics.ListAPIView):
     queryset = ServiceItem.objects.prefetch_related('items').all()
     serializer_class = MainSerializer
+
+class TestView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self,reguest):
+        return Response({'user':reguest.user.username})
 
 
 

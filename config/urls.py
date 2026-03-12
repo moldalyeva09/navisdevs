@@ -17,16 +17,42 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path , include
+from django.http import HttpResponse
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework import routers
 
-import free_consultation
+from activity.views import ActivityViewSet
+from contact.views import ContactViewSet
+from directions.views import DirectionsViewSet, InformationViewSet
 
+from free_consultation.views import ConsultationViewSet, CompletedViewSet
+from full_activity_page.views import ActivityTitleViewSet
+from vacancy.views import TitleViewSet, ApplicationViewSet
+from vacancy_main_page.views import JobsViewSet
+
+router = routers.SimpleRouter()
+
+router.register('contact', ContactViewSet)
+router.register('vacancy', TitleViewSet)
+router.register('direct', DirectionsViewSet)
+router.register('information', InformationViewSet)
+router.register('jobs', JobsViewSet)
+router.register('activity', ActivityViewSet)
+router.register('consultation', ConsultationViewSet)
+router.register('activity_title', ActivityTitleViewSet)
+router.register('application', ApplicationViewSet)
+router.register('completed',CompletedViewSet)
+
+
+def home(request):
+    return HttpResponse ('Сервер иштеп жатат!')
+#
 urlpatterns = [
+    path('api/', include(router.urls)),
+    path("",home),
     path('admin/', admin.site.urls),
     path('',include('main.urls')),
-    path('contact/',include('contact.urls')),
-    path('consultation/',include('free_consultation.urls')),
-    path('vacancy/',include('vacancy.urls')),
-    path('jobs/',include('vacancy_main_page.urls')),
-    path('activity/',include('activity.urls')),
-    path('full_activity_page/',include('full_activity_page.urls')),
-]
+
+   path('api/token/',TokenObtainPairView.as_view()),
+   path('api/token/refresh',TokenRefreshView.as_view()),
+ ]

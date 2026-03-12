@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 from rest_framework import viewsets
-
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 from contact.models import Contact
 from contact.serializer import ContactSerializer
 import requests
@@ -27,4 +28,7 @@ class SendTelegramMessageView(View):
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+
+class TestView(APIView):
+    permission_classes = [IsAuthenticated]
 
